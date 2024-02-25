@@ -23,8 +23,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/v1", userRouter);
+
 dbConnection();
 
 app.use(errorMiddleware);
 
 export default app;
+
