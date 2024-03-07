@@ -57,10 +57,18 @@ export const logout = catchAsyncErrors((req, res, next) => {
     });
 });
 
-export const getMyProfile= catchAsyncErrors((req,res,next)=>{
-  const user= req.user;
+export const getMyProfile = catchAsyncErrors((req, res, next) => {
+  const user = req.user;
   res.status(200).json({
-    success:true,
+    success: true,
     user,
-  })
-})
+  });
+});
+
+export const getAllAuthors = catchAsyncErrors(async (req, res, next) => {
+  const authors = await User.find({ role: "Author" });
+  res.status(200).json({
+    success: true,
+    authors,
+  });
+});
